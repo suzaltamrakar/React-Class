@@ -1,0 +1,26 @@
+#users {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+#users th,
+#users td {
+    padding: 12px 15px;
+    border: 1px solid #afafaf;
+}
+
+#users th {
+    background-color: #5d5d5d;
+    color: #b3b3b3;
+}
+
+#users tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+#users tr:hover {
+    background-color: #888888;
+}
