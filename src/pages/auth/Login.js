@@ -25,8 +25,10 @@ const Login = () => {
     console.log(users);
     if (users.email === 'ADMIN' && users.password === 'admin') {
       console.log('login successful');
+      localStorage.setItem('is_login', 1);
       Navigate('/admin/dashboard');
     } else {
+      localStorage.setItem('is_login', 0);
       console.log('Invalid email or password');
       setError('Invalid email or password');
     }

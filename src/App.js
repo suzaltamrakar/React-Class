@@ -2,53 +2,34 @@ import './assets/css/main.css';
 import './pages/users/Table.css';
 import './pages/users/Users.css';
 import './assets/css/sidebar.css';
-import { BrowserRouter, Routes, Route} from "react-router";
-
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Sidebar from './components/Sidebar';
+import { BrowserRouter, Routes, Route } from "react-router";
 import Dashboard from './pages/Dashboard';
 import Users from './pages/users/Users';
 import Settings from './pages/Settings';
 import UserAdd from './pages/users/UserAdd';
 import Login from './pages/auth/Login';
-// import { useNavigate } from 'react-router';
+// import Layout from './components/Layout';
+import CustomLayout from './components/Layout';
 
 
 
 const App = () => {
-  // const navigate = useNavigate();
-
-  // const Logout = () => {
-  //   // console.log('Add User');
-  //   Navigate('/login');
-  // };
-
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="*" element={
-          <>
-            <Header />
-            <div className="v-row main-wrapper">
-              <Sidebar />
-              <div className="v-col main-body">
-                <Routes>
-                  <Route path="/admin/dashboard" element={<Dashboard title="Hello Admin" />} />
-                  <Route path="/admin/users" element={<Users title="User Page" />} />
-                  <Route path="/admin/users/add" element={<UserAdd title="Add User Page" />} />
-                  <Route path="/admin/settings" element={<Settings title="setting Page" />} />
-                </Routes>
-              </div>
-            </div>
-            <Footer />
-          </>
-        } />
+        <Route path="/login" element={<Login />} ></Route>
+        <Route path="/" element={<Login />} />
+        <Route path="/admin" element={<CustomLayout />} >
 
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="user/create" element={<UserAdd />} />
+          <Route path="users" element={<Users title="Users" />} />
+          <Route path="settings" element={<Settings />} />
+        </Route>
+        
       </Routes>
-
     </BrowserRouter>
+
   );
 }
 

@@ -31,7 +31,7 @@
 }
 
 .sidebar ul li:hover a {
-    color: #.main-wrapper {
+    color: #FEFEFE;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -71,8 +71,26 @@
     transition: background-color 0.3s ease;
 }
 
-.sidebar ul li:hover a {
+.sidebar ul li:hover a,
+.sidebar ul li:hover button {
     color: #FEFEFE;
     transition: color 0.3s ease;
-}FEFEFE;
+}
+
+.sidebar ul .logout-button {
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar ul li button {
+    background-color: transparent;
+    border: transparent;
+    font-weight: bold;
+    width: 100%;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding-left: 10px;
 }
