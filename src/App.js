@@ -22,11 +22,11 @@ const App = () => {
         <Route path="/admin" element={<CustomLayout />} >
 
           <Route path="dashboard" element={<Dashboard />} />
-          <Route path="user/create" element={<UserAdd />} />
+          <Route path="users/add" element={<UserAdd />} />
           <Route path="users" element={<Users title="Users" />} />
           <Route path="settings" element={<Settings />} />
         </Route>
-        
+
       </Routes>
     </BrowserRouter>
 

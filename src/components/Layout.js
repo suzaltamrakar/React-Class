@@ -1,4 +1,4 @@
-import { Navigate, Outlet, useNavigate } from "react-router";
+import { Navigate, Outlet, NavLink, useNavigate } from "react-router";
 import React, { useEffect, useState } from 'react';
 
 import {
@@ -20,13 +20,23 @@ const CustomLayout = () => {
     } = theme.useToken();
 
     const navigate = useNavigate();
-    useEffect(() => {
-        const isLogin = localStorage.getItem('is_login');
-        if (isLogin !== '1') {
-            navigate('/login');
-        }
+    const handleLogoutClick = () => {
+        localStorage.setItem('is_login', 0);
+        navigate('/login');
     }
-        , []);
+
+    const dashboardClick = () => {
+        navigate('/admin/dashboard');
+    }
+
+    const userClick = () => {
+        navigate('/admin/users');
+    }
+
+    const settingClick = () => {
+        localStorage.setItem('is_login', 0);
+        navigate('/admin/settings');
+    }
     return (
         <>
             {/* <Header />
@@ -50,28 +60,28 @@ const CustomLayout = () => {
                                 key: '1',
                                 icon: <DashboardOutlined />,
                                 label: 'Dashboard',
-                                onClick: () => Navigate('/admin/dashboard'),
+                                onClick: (dashboardClick),
 
                             },
                             {
                                 key: '2',
                                 icon: <UserOutlined />,
                                 label: 'User',
-                                onClick: () => Navigate('/admin/user'),
+                                onClick: (userClick),
 
                             },
                             {
                                 key: '3',
                                 icon: <SettingOutlined />,
-                                label: 'Setting',
-                                onClick: () => Navigate('/admin/setting'),
+                                label: 'Settings',
+                                onClick: (settingClick),
 
                             },
                             {
                                 key: '4',
                                 icon: <LogoutOutlined />,
                                 label: 'Logout',
-                                onClick: ()=> Navigate('/logout'),
+                                onClick: (handleLogoutClick),
                             },
                         ]}
                     />
