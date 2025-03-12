@@ -4,10 +4,11 @@ const UserTableHeader = () => {
     return (
         <tr>
             <th>ID</th>
-            <th>Name</th>
+            <th>First Name</th>
+            <th>Last Name</th>
             <th>Age</th>
-            <th>Role</th>
             <th>Email</th>
+            <th>Role</th>
         </tr>
     )
 }

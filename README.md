@@ -2,8 +2,24 @@
 # React-Class
 =======
 # How to Start project
-`npm start`
->>>>>>> b5d5304 (first commit)
+- frontend `npm start`
+- backend `npx json-server db.json --port=4000`
+
+# Hoe to setup a project
+## Frontend 
+- git clone "link of github"
+- cd "file name"
+- `npm install`
+
+## Backend
+- Make Api folder
+- Make db.json file
+- go to 'https://www.npmjs.com/package/json-server' and copy the code of Usage and paste in 'db.json' folder
+- add users data into it
+- note that everything must be between `""` seperately 
+
+### run project on port 4000
+- npx json-server db.json --port=4000
 
 
 # Getting Started with Create React App
@@ -77,6 +93,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
+# --
 
 ## Find the PID:
 Run the following command to find the process ID for the port your React app is using (e.g., port 3000):
@@ -97,3 +114,5 @@ Simply type `rafce` in the new page and get a React Arrow Function Component wit
 
 # Install React Router
 Go to https://reactrouter.com/start/library/installation or paste on `npm i react-router` on your terminal
+
+# 
