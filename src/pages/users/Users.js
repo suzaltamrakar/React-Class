@@ -1,9 +1,8 @@
 import { NavLink, useNavigate } from "react-router";
 import axios from 'axios';
 import { useEffect, useState } from "react";
-import UserData from './UserData';
-import { Space, Table, Tag, Button } from 'antd';
-const { Column, ColumnGroup } = Table
+import { Space, Table, Button } from 'antd';
+const { Column } = Table
 // import type { TableProps } from 'antd';
 
 
@@ -11,11 +10,10 @@ const { Column, ColumnGroup } = Table
 const Users = (props) => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
-  // const data = UserData;
 
   useEffect(() => {
     axios.get('http://localhost:4000/users')
-      .then(response => {
+      .then(function (response) {
         // handle success
         setData(response.data);
         console.log(response);
@@ -50,16 +48,14 @@ const Users = (props) => {
       <Table dataSource={data} rowKey="id">
         {/* <Column title="ID" dataIndex="id" key="id" /> */}
         {/* <ColumnGroup title="Name"> */}
-        <Column title="First Name" dataIndex="firstname" key="firstname"
-          render={(_, item) => <NavLink to={`/admin/users/details/${item.id} `}>{item.firstname}</NavLink>} />
-        <Column title="Last Name" dataIndex="lastname" key="lastname"
-          render={(_, item) => <NavLink to={`/admin/users/details/${item.id} `}>{item.lastname}</NavLink>} />
+        <Column title="Name" dataIndex="name" key="name"
+          render={(_, item) => <NavLink to={`/admin/users/details/${item.id} `}>{item.name}</NavLink>} />
         {/* </ColumnGroup> */}
 
         <Column title="Age" dataIndex="age" key="age" />
         <Column title="Email" dataIndex="email" key="email" />
         <Column title="Role" dataIndex="role" key="role " />
-        <Column
+        {/* <Column
           title="Tags"
           dataIndex="tags"
           key="tags"
@@ -78,13 +74,13 @@ const Users = (props) => {
               })}
             </>
           )}
-        />
+        /> */}
         <Column
           title="Action"
           key="action"
           render={(_, record) => (
             <Space size="middle">
-              <a>Invite {record.lastName}</a>
+              <NavLink to={`/admin/users/edit/${record.id}`}>Edit</NavLink>
               <a>Delete</a>
             </Space>
           )}

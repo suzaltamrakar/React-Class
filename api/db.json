@@ -1,40 +1,66 @@
 {
-    "posts": [
-        {
-            "id": "1",
-            "title": "a title",
-            "views": 100
-        },
-        {
-            "id": "2",
-            "title": "another title",
-            "views": 200
-        }
-    ],
-    "comments": [
-        {
-            "id": "1",
-            "text": "a comment about post 1",
-            "postId": "1"
-        },
-        {
-            "id": "2",
-            "text": "another comment about post 1",
-            "postId": "1"
-        }
-    ],
-    "profile": {
-        "name": "typicode"
+  "posts": [
+    {
+      "id": "1",
+      "title": "a title",
+      "views": 100
     },
-    "users": [
-        { "uuid": "29303b10-61f9-4e29-8aba-4f22d2b12295", "firstname": "John", "lastname": "Doe", "age": 20, "email": "john@example.com", "role": "Admin" },
-        { "uuid": "3560d1e3-6064-4fd7-a057-6035bbc0bba1", "firstname": "Jane", "lastname": "Smith", "age": 21, "email": "jane@example.com", "role": "User" },
-        { "uuid": "a4c93a50-67eb-4866-967d-4a548fe0bf02", "firsename": "Bob", "lastname": "Johnson", "age": 22, "email": "bob@example.com", "role": "User" },
-        { "uuid": "56109d2c-a8ca-4956-b6c0-c023037de176", "firstname": "Mike", "lastname": "Tyson", "age": 23, "email": "mile@example.com", "role": "Admin" }
-    ]
+    {
+      "id": "2",
+      "title": "another title",
+      "views": 200
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "text": "a comment about post 1",
+      "postId": "1"
+    },
+    {
+      "id": "2",
+      "text": "another comment about post 1",
+      "postId": "1"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "users": [
+    {
+      "id": "29303b10-61f9-4e29-8aba-4f22d2b12295",
+      "name": "John Ham",
+      "age": 20,
+      "email": "john@example.com",
+      "role": "Admin"
+    },
+    {
+      "id": "3560d1e3-6064-4fd7-a057-6035bbc0bba1",
+      "name": "Jane Smith",
+      "age": 21,
+      "email": "jane@example.com",
+      "role": "User"
+    },
+    {
+      "id": "a4c93a50-67eb-4866-967d-4a548fe0bf02",
+      "name": "Bob Johnson",
+      "age": 22,
+      "email": "bob@example.com",
+      "role": "User"
+    },
+    {
+      "id": "56109d2c-a8ca-4956-b6c0-c023037de176",
+      "name": "Mike Tyson",
+      "age": 23,
+      "email": "mile@example.com",
+      "role": "Admin"
+    },
+    {
+      "id": "9dc7",
+      "name": "hello world",
+      "age": "24",
+      "email": "hello@gmail.com",
+      "role": "Admin"
+    }
+  ]
 }
-
-
-
-
-

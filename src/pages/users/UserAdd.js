@@ -1,6 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
+import { useParams, useNavigate } from "react-router"
 
 const UserAdd = () => {
+    let params = useParams();
+    const navigate = useNavigate();
+
     const [users, setUsers] = useState({
         name: "",
         age: "",
@@ -71,12 +76,49 @@ const UserAdd = () => {
         }
         console.log(users);
 
+        // Create new user
+        if (!params.userId) {
+            axios.post(`http://localhost:4000/users`, users)
+                .then(function (response) {
+                    // handle success
+                    navigate('/admin/users');
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                });
+        } 
+        // edit user details
+        else { 
+            axios.patch(`http://localhost:4000/users/${params.userId}`, users)
+                .then(function (response) {
+                    // handle success
+                    navigate('/admin/users');
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                });
+        }
+
     }
+// to show the data from the database into table
+    useEffect(() => {
+        axios.get(`http://localhost:4000/users/${params.userId}`)
+            .then(function (response) {
+                // handle success
+                setUsers(response.data);
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            });
+    }, []);
 
     return (
         <div className='addpage'>
             <div className="addpage-box">
-                <h1> Add User </h1>
+                <h1>{params.userId ? "Edit" : "Add"} User</h1>
                 <form>
                     <div className="name field">
                         <label htmlFor="name">Name:</label>
@@ -86,7 +128,7 @@ const UserAdd = () => {
 
                     <div className="age field">
                         <label htmlFor="age">Age:</label>
-                        <input type="number" id="age" name="age" value={users.age} onChange={handleAgeChange} placeholder='Phone Number' />
+                        <input type="number" id="age" name="age" value={users.age} onChange={handleAgeChange} placeholder='Age' />
                         <div className="error">{error.age}</div>
                     </div>
 
@@ -100,8 +142,8 @@ const UserAdd = () => {
                         <label htmlFor="role">Role:</label>
                         <select id="role" name="role" value={users.role} onChange={(e) => { handleRoleChange(e) }}>
                             <option value="">Select Role</option>
-                            <option value="admin" selected={users.role === "admin"}>Admin</option>
-                            <option value="user" selected={users.role === "user"}>User</option>
+                            <option value="Admin" selected={users.role === "Admin"}>Admin</option>
+                            <option value="User" selected={users.role === "User"}>User</option>
                         </select>
                         <div className="error">{error.role}</div>
                     </div>
