@@ -15,11 +15,19 @@
 - Make Api folder
 - Make db.json file
 - go to 'https://www.npmjs.com/package/json-server' and copy the code of Usage and paste in 'db.json' folder
+- `npm i json-server`
 - add users data into it
 - note that everything must be between `""` seperately 
 
-### run project on port 4000
-- npx json-server db.json --port=4000
+
+## Add ant design in your project
+- Installation: `npm i antd`
+
+## Add axios design in your project
+- Installation: `npm i axios`
+
+## Add react router dom design in your project
+- Installation: `npm i react-router-dom`
 
 
 # Getting Started with Create React App
