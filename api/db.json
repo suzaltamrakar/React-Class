@@ -58,9 +58,16 @@
     {
       "id": "9dc7",
       "name": "hello world",
-      "age": "24",
-      "email": "hello@gmail.com",
+      "age": "22",
+      "email": "helloworld123@gmail.com",
       "role": "Admin"
+    },
+    {
+      "id": "80f4",
+      "name": "Irene Holland",
+      "age": "45",
+      "email": "zogurotiza@mailinator.com",
+      "role": "User"
     }
   ]
 }
