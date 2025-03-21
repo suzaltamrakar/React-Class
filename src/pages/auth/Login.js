@@ -1,8 +1,7 @@
 import React, { useState, useContext } from 'react';
 import './login.css';
 import { useNavigate } from 'react-router';
-// import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input, Flex, Card } from 'antd';
+import { Button, Form, Input, Card } from 'antd';
 import { checkLogin } from '../../utils/user.util';
 import { UserContext } from '../../context/user.context';
 import { showerrorToast, showSuccessToast } from '../../utils/toastify.utils';
@@ -15,6 +14,7 @@ const Login = () => {
   const onFinish = (values) => {
     console.log('Success:', values);
     checkLogin(values.username, values.password).then((data) => {
+      console.log(values);
       if (data === null) {
         showerrorToast("Login Failed");
       } else {
@@ -43,38 +43,38 @@ const Login = () => {
         title={<h1>Admin Login</h1>}
       >
         {message && <div>{message}</div>}
-      <Form
-        name="basic"
-        labelCol={{ span: 8 }}
-        wrapperCol={{ span: 16 }}
-        style={{ maxWidth: 600 }}
-        initialValues={{ remember: true }}
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
-        autoComplete="off"
-      >
-        <Form.Item
-          label="Username"
-          name="username"
-          rules={[{ required: true, message: 'Please input your username!' }]}
+        <Form
+          name="basic"
+          labelCol={{ span: 8 }}
+          wrapperCol={{ span: 16 }}
+          style={{ maxWidth: 600 }}
+          initialValues={{ remember: true }}
+          onFinish={onFinish}
+          onFinishFailed={onFinishFailed}
+          autoComplete="off"
         >
-          <Input />
-        </Form.Item>
+          <Form.Item
+            label="Username"
+            name="username"
+            rules={[{ required: true, message: 'Please input your username!' }]}
+          >
+            <Input />
+          </Form.Item>
 
-        <Form.Item
-          label="Password"
-          name="password"
-          rules={[{ required: true, message: 'Please input your password!' }]}
-        >
-          <Input.Password />
-        </Form.Item>
+          <Form.Item
+            label="Password"
+            name="password"
+            rules={[{ required: true, message: 'Please input your password!' }]}
+          >
+            <Input.Password />
+          </Form.Item>
 
-        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-          <Button type="primary" htmlType="submit">
-            Login
-          </Button>
-        </Form.Item>
-      </Form>
+          <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+            <Button type="primary" htmlType="submit">
+              Login
+            </Button>
+          </Form.Item>
+        </Form>
       </Card>
 
 

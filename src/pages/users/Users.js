@@ -1,11 +1,14 @@
 import { NavLink, useNavigate } from "react-router";
 import { useEffect, useState } from "react";
-import { Space, Table, Button, Card } from 'antd';
-import { getUsers } from "../../utils/user.util";
+import { Space, Table, Button, Card, Modal } from 'antd';
+import { deleteUser, getUsers } from "../../utils/user.util";
+import { showSuccessToast } from "../../utils/toastify.utils";
 import {
   EditOutlined,
   DeleteOutlined
 } from '@ant-design/icons';
+
+
 const { Column } = Table
 
 const Users = (props) => {
@@ -22,6 +25,24 @@ const Users = (props) => {
     navigate('/admin/users/add')
   }
 
+  const [open, setOpen] = useState(false);
+  const [deleteId, setDeleteId] = useState(null);
+  const showModal = (id) => {
+    setDeleteId(id)
+    setOpen(true);
+  };
+  const hideModal = () => {
+    setOpen(false);
+  };
+  const deleteModal = () => {
+    deleteUser(deleteId).then(() => {
+      getUsers().then((response) => {
+        setData(response);
+        showSuccessToast('User deleted successfully');
+        setOpen(false);
+      });
+    });
+  };
 
   return (
     <div className="v-col users">
@@ -55,11 +76,20 @@ const Users = (props) => {
             render={(_, record) => (
               <Space size="middle">
                 <NavLink to={`/admin/users/edit/${record.id}`}> <EditOutlined />Edit</NavLink>
-                <DeleteOutlined onClick={() => alert("NO")} style={{ color: 'red' }} />              </Space>
+                <a style={{color:'red'}}><DeleteOutlined onClick={() => showModal(record.id)} style={{ color: 'red' }} />Delete</a>
+              </Space>
             )}
           />
         </Table>
       </Card>
+      <Modal
+        title="Are you sure about that!!"
+        open={open}
+        onOk={deleteModal}
+        onCancel={hideModal}
+        okText="Yes"
+        cancelText="Cancel"
+      ></Modal>
 
     </div >
   );

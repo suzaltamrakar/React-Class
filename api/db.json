@@ -66,14 +66,6 @@
       "email": "helloworld123@gmail.com",
       "role": "Admin",
       "password": "123456"
-    },
-    {
-      "id": "80f4",
-      "name": "Irene Holland",
-      "age": "45",
-      "email": "zogurotiza@mailinator.com",
-      "role": "User",
-      "password": "123456"
     }
   ]
 }
