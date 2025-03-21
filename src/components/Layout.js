@@ -1,6 +1,6 @@
 import { Navigate, Outlet, NavLink, useNavigate } from "react-router";
-import React, { useEffect, useState } from 'react';
-
+import React, { useState, useEffect, useContext } from 'react';
+import { UserContext } from '../context/user.context';
 import {
     MenuFoldOutlined,
     MenuUnfoldOutlined,
@@ -10,9 +10,11 @@ import {
     LogoutOutlined,
 } from '@ant-design/icons';
 import { Button, Layout, Menu, theme } from 'antd';
+import { showSuccessToast } from "../utils/toastify.utils";
 const { Header, Sider, Content } = Layout;
 
 const CustomLayout = () => {
+    const { _user } = useContext(UserContext);
 
     const [collapsed, setCollapsed] = useState(false);
     const {
@@ -22,6 +24,7 @@ const CustomLayout = () => {
     const navigate = useNavigate();
     const handleLogoutClick = () => {
         localStorage.setItem('is_login', 0);
+        showSuccessToast("Logout Successful");
         navigate('/login');
     }
 
@@ -48,9 +51,12 @@ const CustomLayout = () => {
         </div> 
         <Footer /> */}
 
-            <Layout>
+            <Layout style={{ minHeight: '100vh' }}>
                 <Sider trigger={null} collapsible collapsed={collapsed}>
-                    <div className="demo-logo-vertical" />
+                    <div className="demo-logo-vertical" >
+                        <img src="https://www.virinchicollege.edu.np/storage/site/941680252040.png" alt="logo" style={{ height: 90, padding: 25 }} />
+                    </div>
+                    <div style={{ color: "#ffffff", padding: 30 }}>{_user?.email}</div>
                     <Menu
                         theme="dark"
                         mode="inline"

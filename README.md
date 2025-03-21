@@ -19,6 +19,8 @@
 - add users data into it
 - note that everything must be between `""` seperately 
 
+## Add boiler code in js page
+- type `rafce` and hit enter
 
 ## Add ant design in your project
 - Installation: `npm i antd`

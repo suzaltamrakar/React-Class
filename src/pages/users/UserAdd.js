@@ -8,7 +8,7 @@ import {
     Radio,
     Select,
 } from 'antd';
-import { createUser, getUser, updateUser } from "../../uitls/user.util";
+import { createUser, getUser, updateUser } from "../../utils/user.util";
 
 
 const { Option } = Select;
@@ -16,7 +16,6 @@ const { Option } = Select;
 const UserAdd = () => {
     let params = useParams();
     const navigate = useNavigate();
-
     const [formState, setFormState] = useState(
         {
             name: "",
@@ -27,7 +26,6 @@ const UserAdd = () => {
     );
     const [form] = Form.useForm();
 
-    // to show the data from the database into table
     useEffect(() => {
         if (params.userId) {
             getUser(params.userId).then((data) => {
@@ -49,43 +47,108 @@ const UserAdd = () => {
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
-
     return (
-        <div className='addpage'>
+        <div>
             <Card
                 style={{
                     marginTop: 16,
-                    width: 400,
                 }}
                 type="inner"
                 title={<h1>{params.userId ? "Edit User" : "Add User"}</h1>}
             >
+                <Form
+                    form={form}
+                    onFinish={onFinish}
+                    initialValues={formState}
+                    onFinishFailed={onFinishFailed}
+                >
+                    <Form.Item
+                        name="name"
+                        label="Name"
+                        rules={[
+                            {
+                                type: 'text',
+                                message: 'The input is not valid name!',
+                            },
+                            {
+                                required: true,
+                                message: 'Please input your name!',
+                            },
+                        ]}
+                    >
+                        <Input />
+                    </Form.Item>
 
-                <form>
-                    <Form.Item label="Name">
-                        <Input type="text" id="name" name="name" placeholder='Full Name' />
-                    </Form.Item>
-                    <Form.Item label="Age">
-                        <Input type="number" id="age" name="age" placeholder='Age' />
-                    </Form.Item>
-                    <Form.Item label="Email">
-                        <Input type="email" id="email" name="email" placeholder='Email Address' />
-                    </Form.Item>
-                    <Form.Item label="Role">
-                        <Radio.Group id="role" name="role" >
-                            <Radio value="Admin"> Admin </Radio>
-                            <Radio value="User"> User </Radio>
-                        </Radio.Group>
+                    <Form.Item
+                        name="age"
+                        label="Age"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please input your age!',
+                            },
+                        ]}
+                    >
+                        <Input />
                     </Form.Item>
 
+                    <Form.Item
+                        name="email"
+                        label="E-mail"
+                        rules={[
+                            {
+                                type: 'email',
+                                message: 'The input is not valid E-mail!',
+                            },
+                            {
+                                required: true,
+                                message: 'Please input your E-mail!',
+                            },
+                        ]}
+                    >
+                        <Input />
+                    </Form.Item>
+
+                    <Form.Item
+                        name="password"
+                        label="Password"
+                        rules={[
+                            {
+                                type: 'email',
+                                message: 'The input is not valid Password!',
+                            },
+                            {
+                                required: true,
+                                message: 'Please input your Password!',
+                            },
+                        ]}
+                    >
+                        <Input />
+                    </Form.Item>
+
+                    <Form.Item
+                        name="role"
+                        label="Role"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please select role!',
+                            },
+                        ]}
+                    >
+                        <Select placeholder="select your role">
+                            <Option value="admin">Admin</Option>
+                            <Option value="user">User</Option>
+                        </Select>
+                    </Form.Item>
                     <Form.Item label={null}>
                         <Button type="primary" htmlType="submit">
                             Save
                         </Button>
                     </Form.Item>
-                </form>
+                </Form>
             </Card>
-        </div >
+        </div>
     );
 }
 
