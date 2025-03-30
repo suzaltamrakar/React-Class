@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 # React-Class
-=======
 # How to Start project
 - frontend `npm start`
 - backend `npx json-server db.json --port=4000`

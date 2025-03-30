@@ -67,5 +67,39 @@
       "role": "Admin",
       "password": "123456"
     }
+  ],
+  "rooms": [
+    {
+      "id": "29303b10-61f9-4e29-8aba-4f22d2b12295",
+      "room": "Hostel",
+      "location": "Kumaripati",
+      "price": 2000,
+      "bed": 2,
+      "email": "john@example.com"
+    },
+    {
+      "id": "3560d1e3-6064-4fd7-a057-6035bbc0bba1",
+      "room": "Hostel",
+      "location": "Kumaripati",
+      "price": 2000,
+      "bed": 2,
+      "email": "john@example.com"
+    },
+    {
+      "id": "a4c93a50-67eb-4866-967d-4a548fe0bf02",
+      "room": "Hostel",
+      "location": "Kumaripati",
+      "price": 2000,
+      "bed": 2,
+      "email": "john@example.com"
+    },
+    {
+      "id": "56109d2c-a8ca-4956-b6c0-c023037de176",
+      "room": "Hostel",
+      "location": "Kumaripati",
+      "price": 2000,
+      "bed": 2,
+      "email": "john@example.com"
+    }
   ]
 }

@@ -5,7 +5,6 @@ import {
     Card,
     Form,
     Input,
-    Radio,
     Select,
 } from 'antd';
 import { createUser, getUser, updateUser } from "../../utils/user.util";
@@ -114,7 +113,7 @@ const UserAdd = () => {
                         label="Password"
                         rules={[
                             {
-                                type: 'email',
+                                type: 'password',
                                 message: 'The input is not valid Password!',
                             },
                             {

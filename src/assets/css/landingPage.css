@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: #fff;
+    color: #fff;
+    height: 75px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    width: auto;
+    height: 30px;
+}
+
+.search input {
+    width: 250px;
+    border-radius: 8px 0 0 8px;
+    border: 1px solid red;
+}
+
+.search button {
+    height: 30px;
+    border-radius: 0 8px 8px 0;
+    background-color: red;
+    border: none;
+}
+
+.search button SearchOutlined {
+    font-size: 20px;
+    color: red;
+    display: flex;
+    justify-content: center;
+    width: 30px;
+    border: none;
+}
+
+.nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.nav ul {
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    padding: 0 20px;
+}
+
+.nav ul li {
+    display: block;
+    padding: 0 20px;
+}
+
+.search {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+
+}
+
+.userlogin {
+    width: 30rem;
+}
+
+.action {
+    display: flex;
+    width: 150px;
+    margin-right: 20px;
+    justify-content: space-between;
+}
+
+.action button {
+    background-color: red;
+    margin: 0 10px;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: row;
+    color: black;
+    align-items: center;
+}
+
+.user-info h3 {
+    padding-left: 5px;
+}

@@ -1,28 +1,35 @@
 import React, { useState, useContext } from 'react';
-import './login.css';
 import { useNavigate } from 'react-router';
 import { Button, Form, Input, Card } from 'antd';
 import { checkLogin } from '../../utils/user.util';
 import { UserContext } from '../../context/user.context';
-import { showerrorToast, showSuccessToast } from '../../utils/toastify.utils';
+import { showerrorToast, showSuccessToast, showAdminToast } from '../../utils/toastify.utils';
 
 const Login = () => {
   const navigate = useNavigate();
-  const [message] = useState('');
+  const [users, setUsers] = useState(null);
   const { _setUser } = useContext(UserContext);
 
   const onFinish = (values) => {
     console.log('Success:', values);
+
     checkLogin(values.username, values.password).then((data) => {
       console.log(values);
+
+      if (values.username === 'admin' && values.password === 'admin') {
+        showAdminToast('Admin Login successful');
+        navigate('/admin/dashboard');
+        return;
+      }
+
       if (data === null) {
         showerrorToast("Login Failed");
       } else {
-        showSuccessToast("Login Successful");
+        showSuccessToast("User Login Successful");
         _setUser(data);
         localStorage.setItem('is_login', 1);
         localStorage.setItem('user', JSON.stringify(data));
-        navigate('/admin/dashboard');
+        navigate('/user/dashboard');  // Redirect users to user dashboard
       }
     });
   };
@@ -40,9 +47,8 @@ const Login = () => {
           margin: '100px auto',
         }}
         type="inner"
-        title={<h1>Admin Login</h1>}
+        title={<h1>Login</h1>}
       >
-        {message && <div>{message}</div>}
         <Form
           name="basic"
           labelCol={{ span: 8 }}
@@ -76,9 +82,8 @@ const Login = () => {
           </Form.Item>
         </Form>
       </Card>
-
-
     </div>
   );
 };
+
 export default Login;

@@ -1,13 +1,12 @@
-import { Navigate, Outlet, NavLink, useNavigate } from "react-router";
-import React, { useState, useEffect, useContext } from 'react';
+import { Outlet, useNavigate } from "react-router";
+import React, { useState, useContext } from 'react';
 import { UserContext } from '../context/user.context';
 import {
     MenuFoldOutlined,
     MenuUnfoldOutlined,
     DashboardOutlined,
     UserOutlined,
-    SettingOutlined,
-    LogoutOutlined,
+    HomeFilled,    LogoutOutlined,
 } from '@ant-design/icons';
 import { Button, Layout, Menu, theme } from 'antd';
 import { showSuccessToast } from "../utils/toastify.utils";
@@ -36,26 +35,17 @@ const CustomLayout = () => {
         navigate('/admin/users');
     }
 
-    const settingClick = () => {
+    const roomClick = () => {
         localStorage.setItem('is_login', 0);
-        navigate('/admin/settings');
+        navigate('/admin/rooms');
     }
     return (
         <>
-            {/* <Header />
-        <div className="v-row main-wrapper">
-          <Sidebar/>
-          <div className="v-col main-body">
-            <Outlet />
-          </div>
-        </div> 
-        <Footer /> */}
-
             <Layout style={{ minHeight: '100vh' }}>
                 <Sider trigger={null} collapsible collapsed={collapsed}>
-                    <div className="demo-logo-vertical" >
+                    {/* <div className="demo-logo-vertical" >
                         <img src="https://www.virinchicollege.edu.np/storage/site/941680252040.png" alt="logo" style={{ height: 90, padding: 25 }} />
-                    </div>
+                    </div> */}
                     <div style={{ color: "#ffffff", padding: 30 }}>{_user?.email}</div>
                     <Menu
                         theme="dark"
@@ -72,15 +62,15 @@ const CustomLayout = () => {
                             {
                                 key: '2',
                                 icon: <UserOutlined />,
-                                label: 'User',
+                                label: 'User Detail',
                                 onClick: (userClick),
 
                             },
                             {
                                 key: '3',
-                                icon: <SettingOutlined />,
-                                label: 'Settings',
-                                onClick: (settingClick),
+                                icon: <HomeFilled />,
+                                label: 'Room Details',
+                                onClick: (roomClick),
 
                             },
                             {

@@ -76,7 +76,7 @@ const Users = (props) => {
             render={(_, record) => (
               <Space size="middle">
                 <NavLink to={`/admin/users/edit/${record.id}`}> <EditOutlined />Edit</NavLink>
-                <a style={{color:'red'}}><DeleteOutlined onClick={() => showModal(record.id)} style={{ color: 'red' }} />Delete</a>
+                <a style={{ color: 'red' }}><DeleteOutlined onClick={() => showModal(record.id)} style={{ color: 'red' }} />Delete</a>
               </Space>
             )}
           />

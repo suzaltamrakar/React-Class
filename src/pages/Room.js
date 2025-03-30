@@ -1,4 +1,4 @@
-const Settings = () => {
+const Room = () => {
   return (
     <div className="v-col settings">
       <h1>Settings</h1>
@@ -7,4 +7,4 @@ const Settings = () => {
   );
 }
 
-export default Settings;
+export default Room;
